@@ -1,21 +1,35 @@
 import React from "react";
-import { Box, Grid, Card, Typography, CardContent, Button } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Card,
+  Typography,
+  CardContent,
+  Button,
+} from "@mui/material";
 import styles from "./collection.module.css";
 import Image from "next/image";
-import tot from '../../images2/Totebags/tot.jpg'
-import img1 from '../../images2/backpack/1.jpg'
-import img2 from '../../images2/crossbodybag/cross.jpg'
-import img3 from '../../images2/handbags/hand.jpg'
-import img4 from '../../images2/Shoulder/shoulder.jpg'
+import tot from "../../images2/Totebags/tot.jpg";
+import img2 from "../../images2/crossbodybag/cross.jpg";
+import img3 from "../../images2/handbags/hand.jpg";
+import img4 from "../../images2/Shoulder/shoulder.jpg";
+import { useRouter } from "next/router";
+
 export default function Collection() {
+  const router = useRouter();
+
+  const handleMore = (e) => {
+    e.preventDefault();
+    router.push('/category')
+  }
   return (
     <div>
       <div className={styles.collection}>
-        <Box className={styles.head} >Collections</Box>
+        <Box className={styles.head}>Collections</Box>
         <Grid container>
-<Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
-<Card className={styles.card} >
-              <Image src={tot}  className={styles.img} />
+          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
+            <Card className={styles.card}>
+              <Image src={tot} className={styles.img} />
             </Card>
             <CardContent>
               <Typography
@@ -28,12 +42,19 @@ export default function Collection() {
               </Typography>
             </CardContent>
             <Box textAlign="center">
-              <Button  variant="contained" className={styles.btn} sx={{backgroundColor: '#5C727D', color:'white', }} >More Items</Button>
+              <Button
+                variant="contained"
+                onClick={(e) => handleMore(e)}
+                className={styles.btn}
+                sx={{ backgroundColor: "#5C727D", color: "white" }}
+              >
+                More Items
+              </Button>
             </Box>
-</Grid>
-<Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
-<Card className={styles.card} >
-              <Image src={img2}  className={styles.img} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
+            <Card className={styles.card}>
+              <Image src={img2} className={styles.img} />
             </Card>
             <CardContent>
               <Typography
@@ -46,12 +67,19 @@ export default function Collection() {
               </Typography>
             </CardContent>
             <Box textAlign="center">
-              <Button  variant="contained" className={styles.btn} sx={{backgroundColor: '#5C727D', color:'white', }} >More Items</Button>
+              <Button
+                variant="contained"
+                className={styles.btn}
+                onClick={(e) => handleMore(e)}
+                sx={{ backgroundColor: "#5C727D", color: "white" }}
+              >
+                More Items
+              </Button>
             </Box>
-</Grid>
-<Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
-<Card className={styles.card} >
-              <Image src={img3}  className={styles.img} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
+            <Card className={styles.card}>
+              <Image src={img3} className={styles.img} />
             </Card>
             <CardContent>
               <Typography
@@ -64,12 +92,19 @@ export default function Collection() {
               </Typography>
             </CardContent>
             <Box textAlign="center">
-              <Button  variant="contained" className={styles.btn} sx={{backgroundColor: '#5C727D', color:'white', }} >More Items</Button>
+              <Button
+                variant="contained"
+                className={styles.btn}
+                onClick={(e) => handleMore(e)}
+                sx={{ backgroundColor: "#5C727D", color: "white" }}
+              >
+                More Items
+              </Button>
             </Box>
-</Grid>
-<Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
-<Card className={styles.card} >
-              <Image src={img4}  className={styles.img} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
+            <Card className={styles.card}>
+              <Image src={img4} className={styles.img} />
             </Card>
             <CardContent>
               <Typography
@@ -78,16 +113,22 @@ export default function Collection() {
                 component="div"
                 align="center"
               >
-                Shoulder bags 
+                Shoulder bags
               </Typography>
             </CardContent>
             <Box textAlign="center">
-              <Button  variant="contained" className={styles.btn} sx={{backgroundColor: '#5C727D', color:'white', }} >More Items</Button>
+              <Button
+                variant="contained"
+                className={styles.btn}
+                onClick={(e) => handleMore(e)}
+                sx={{ backgroundColor: "#5C727D", color: "white" }}
+              >
+                More Items
+              </Button>
             </Box>
-</Grid>
+          </Grid>
 
-
- {/* <Grid item xs={12} sm={6} md={3} lg={3} mx={0} >
+          {/* <Grid item xs={12} sm={6} md={3} lg={3} mx={0} >
 <Card className={styles.card} >
               <Image src={img1}  className={styles.img} />
             </Card>

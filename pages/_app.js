@@ -1,10 +1,10 @@
 import '@/styles/globals.css'
 import Navbar from '../Components/Navbar/Navbar'
 import Footer from '../Components/Footer/Footer'
-import Catagory from '../Components/category/Catagory'
+import Catagory from './category'
 import Details from '../pages/details/index'
-import Cart from '../pages/Cart/Cart'
-import Shipping from '../pages/Shipping/Shipping'
+import Cart from './Cart'
+import Shipping from './Shipping'
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,8 +13,8 @@ export default function App({ Component, pageProps }) {
     {/* <Catagory/> */}
     {/* <Details/> */}
     {/* <Cart/> */}
-    <Shipping/>
-  {/* <Component {...pageProps} /> */}
+    {/* <Shipping/> */}
+  <Component {...pageProps} />
   <Footer/>
   </>
   )

@@ -2,11 +2,15 @@ import React from "react";
 import styles from "../Shipping/shipping.module.css";
 import { Container, Grid, Typography, Card, Box, Button, MenuItem } from "@mui/material";
 import TextField from "@mui/material/TextField";
-
-
-
+import { useRouter } from "next/router";
 
 export default function Shipping() {
+  const router = useRouter();
+
+  const continueShopping = (e) => {
+    e.preventDefault();
+    router.push('/')
+  }
   return (
     <div className={styles.shipping}>
       <Container>
@@ -74,7 +78,7 @@ export default function Shipping() {
               <Button variant="contained" className={styles.submitbtn}>
                 Submit Now
               </Button>
-              <Button variant="contained" className={styles.submitbtn}>
+              <Button onClick={(e) => continueShopping(e)} variant="contained" className={styles.submitbtn}>
                 Continue to shoping
               </Button>
             </div>
