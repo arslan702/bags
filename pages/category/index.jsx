@@ -7,7 +7,6 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import SearchIcon from "@mui/icons-material/Search";
 import {
   Container,
   Grid,
@@ -18,7 +17,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import img1 from "../../images2/backpack/1.jpg";
-import img2 from "../../images2/hot/2.jpg";
+import img2 from "../../images2/Hot/2.jpg";
 import img3 from "../../images2/Shoulder/3.jpg";
 import img4 from "../../images2/Totebags/4.jpg";
 import img5 from "../../images2/crossbodybag/1.jpg";
