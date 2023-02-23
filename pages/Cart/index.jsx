@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Cart/cart.module.css";
+import styles from "./cart.module.css";
 // import { Container, Grid, Typography, Card, Box, Button } from "@mui/material";
 import Image from "next/image";
 import img5 from "../../images2/crossbodybag/1.jpg";

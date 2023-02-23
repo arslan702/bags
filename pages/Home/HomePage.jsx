@@ -13,7 +13,7 @@ export default function HomePage() {
     <div>
       <div className={styles.home}>
         <Box>
-          <Button variant="contained" className={styles.homebtn}>
+          <Button className={styles.homebtn}>
             See All Products
           </Button>
         </Box>

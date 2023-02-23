@@ -17,7 +17,7 @@ import img8 from '../../images2/handbags/3.jpg'
 
 
 import Image from "next/image";
-import styles from '../Catalouge/catalouge.module.css'
+import styles from './catalouge.module.css'
 
 import { textAlign, Container } from '@mui/system';
 import {
