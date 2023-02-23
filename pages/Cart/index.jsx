@@ -119,16 +119,16 @@ export default function Cart() {
         <div className={styles.project}>
           <div className={styles.shop}>
             <div className={styles.box}>
-              <Image src={img5} className={styles.img2} />
+              <Image src={img5} className={styles.img2} alt=''/>
               <div className={styles.content}>
                 <h3>Women Lipsticks</h3>
                 <h4>Price: $40</h4>
-                <p className={styles.unit}>
+                <div className={styles.unit}>
                   Quantity: <input name defaultValue={2} />
-                </p>
-                <p className={styles.btnarea}>
+                </div>
+                <div className={styles.btnarea}>
                   <DeleteIcon /> <span className="btn2">Remove</span>
-                </p>
+                </div>
               </div>
             </div>
 
@@ -137,12 +137,12 @@ export default function Cart() {
               <div className={styles.content}>
                 <h3>Man's Watches</h3>
                 <h4>Price: $40</h4>
-                <p className={styles.unit}>
+                <div className={styles.unit}>
                   Quantity: <input name defaultValue={1} />
-                </p>
-                <p className={styles.btnarea}>
+                </div>
+                <div className={styles.btnarea}>
                   <DeleteIcon /> <span className="btn2">Remove</span>
-                </p>
+                </div>
               </div>
             </div>
 
@@ -151,32 +151,32 @@ export default function Cart() {
               <div className={styles.content}>
                 <h3>Man's Watches</h3>
                 <h4>Price: $40</h4>
-                <p className={styles.unit}>
+                <div className={styles.unit}>
                   Quantity: <input name defaultValue={1} />
-                </p>
-                <p className={styles.btnarea}>
+                </div>
+                <div className={styles.btnarea}>
                   <DeleteIcon className={styles.ico} />{" "}
                   <span className="btn2">Remove</span>
-                </p>
+                </div>
               </div>
             </div>
 
             <div className={styles.rightbar}>
-              <p>
+              <div>
                 <span>Subtotal</span> <span>$120</span>
-              </p>
+              </div>
               <hr />
-              <p>
+              <div>
                 <span>Tax (5%)</span> <span>$6</span>
-              </p>
+              </div>
               <hr />
-              <p>
+              <div>
                 <span>Shipping</span> <span>$15</span>
-              </p>
+              </div>
               <hr />
-              <p>
+              <div>
                 <span>Total</span> <span>$141</span>
-              </p>
+              </div>
               <Link href="/Shipping">
               {/* <a> */}
                 <ShoppingCartIcon className={styles.del} />

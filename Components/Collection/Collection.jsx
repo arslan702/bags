@@ -29,11 +29,11 @@ export default function Collection() {
         <Grid container>
           <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
             <Card className={styles.card}>
-              <Image src={tot} className={styles.img} />
+              <Image src={tot} className={styles.img} alt=''/>
             </Card>
             <CardContent>
               <Typography
-                gutterBottom
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
@@ -54,11 +54,11 @@ export default function Collection() {
           </Grid>
           <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
             <Card className={styles.card}>
-              <Image src={img2} className={styles.img} />
+              <Image src={img2} className={styles.img} alt=''/>
             </Card>
             <CardContent>
               <Typography
-                gutterBottom
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
@@ -79,11 +79,11 @@ export default function Collection() {
           </Grid>
           <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
             <Card className={styles.card}>
-              <Image src={img3} className={styles.img} />
+              <Image src={img3} className={styles.img} alt=''/>
             </Card>
             <CardContent>
               <Typography
-                gutterBottom
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
@@ -104,11 +104,11 @@ export default function Collection() {
           </Grid>
           <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
             <Card className={styles.card}>
-              <Image src={img4} className={styles.img} />
+              <Image src={img4} className={styles.img} alt=''/>
             </Card>
             <CardContent>
               <Typography
-                gutterBottom
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"

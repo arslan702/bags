@@ -6,9 +6,6 @@ import { hotProducts } from "../Slider/data";
 export default function Hot() {
   return (
     <>
-      <div>
-        <div></div>
-      </div>
       <Slider title="Hot Products" products={hotProducts} />
     </>
   );

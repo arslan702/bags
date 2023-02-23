@@ -13,9 +13,6 @@ import img6 from '../../images2/crossbodybag/2.jpg'
 import img7 from '../../images2/handbags/3.jpg'
 import img8 from '../../images2/handbags/3.jpg'
 
-
-
-
 import Image from "next/image";
 import styles from './catalouge.module.css'
 
@@ -82,62 +79,62 @@ export default function BasicTabs() {
       <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card className={styles.card}>
-              <Image src={img1}  className={styles.img} />
+              <Image src={img1}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
            
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card className={styles.card}>
-              <Image src={img2}  className={styles.img}/>
+              <Image src={img2}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
             
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3} >
             <Card className={styles.card}>
-              <Image src={img3}  className={styles.img}/>
+              <Image src={img3}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
             
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3} >
             <Card className={styles.card}>
-              <Image src={img4}  className={styles.img} />
+              <Image src={img4}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
@@ -145,7 +142,7 @@ export default function BasicTabs() {
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
            
           </Grid>
@@ -155,63 +152,63 @@ export default function BasicTabs() {
       <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card className={styles.card}>
-              <Image src={img5}  className={styles.img} />
+              <Image src={img5} className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
             
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card className={styles.card}>
-            <Image src={img6}  className={styles.img}/>
+            <Image src={img6}  className={styles.img} alt=''/>
 
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
             
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3} >
             <Card className={styles.card}>
-              <Image src={img7}  className={styles.img}/>
+              <Image src={img7}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
             
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3} >
             <Card className={styles.card}>
-              <Image src={img8}  className={styles.img} />
+              <Image src={img8}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
@@ -219,7 +216,7 @@ export default function BasicTabs() {
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
            
           </Grid>
@@ -229,62 +226,62 @@ export default function BasicTabs() {
       <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card className={styles.card}>
-              <Image src={img2}  className={styles.img} />
+              <Image src={img2}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
            
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card className={styles.card}>
-              <Image src={img3}  className={styles.img}/>
+              <Image src={img3}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
            
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3} >
             <Card className={styles.card}>
               
-              <Image src={img4}  className={styles.img} />
+              <Image src={img4}  className={styles.img} alt=''/>
             </Card>
             <CardContent>
-              <Typography
-                gutterBottom
+              <div
+                gutterbottom
                 variant="h6"
                 component="div"
                 align="center"
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
             
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3} >
             <Card className={styles.card} >
-            <Image src={img5}  className={styles.img}/> 
+            <Image src={img5}  className={styles.img} alt=''/> 
             </Card>
             <CardContent>
-              <Typography
+              <div
                 gutterBottom
                 variant="h6"
                 component="div"
@@ -293,7 +290,7 @@ export default function BasicTabs() {
               >
                 Zipper bag <br />
                 <del className={styles.old} >100$  </del>50$/- 
-              </Typography>
+              </div>
             </CardContent>
             
           </Grid>

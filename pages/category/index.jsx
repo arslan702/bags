@@ -253,13 +253,13 @@ export default function CustomizedAccordions() {
 
                   <CardContent>
                     <Typography
-                      gutterBottom
+                      gutterbottom
                       variant="h6"
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
@@ -269,13 +269,13 @@ export default function CustomizedAccordions() {
                   <Image src={img2} className={styles.img} />
                   <CardContent>
                     <Typography
-                      gutterBottom
+                      gutterbottom
                       variant="h6"
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
@@ -285,13 +285,13 @@ export default function CustomizedAccordions() {
                   <Image src={img3} className={styles.img} />
                   <CardContent>
                     <Typography
-                      gutterBottom
+                      gutterbottom
                       variant="h6"
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
@@ -301,13 +301,13 @@ export default function CustomizedAccordions() {
                   <Image src={img4} className={styles.img} />
                   <CardContent>
                     <Typography
-                      gutterBottom
+                      gutterbottom
                       variant="h6"
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
@@ -317,13 +317,13 @@ export default function CustomizedAccordions() {
                   <Image src={img5} className={styles.img} />
                   <CardContent>
                     <Typography
-                      gutterBottom
+                      gutterbottom
                       variant="h6"
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
@@ -333,13 +333,13 @@ export default function CustomizedAccordions() {
                   <Image src={img6} className={styles.img} />
                   <CardContent>
                     <Typography
-                      gutterBottom
+                      gutterbottom
                       variant="h6"
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
@@ -349,13 +349,13 @@ export default function CustomizedAccordions() {
                   <Image src={img7} className={styles.img} />
                   <CardContent>
                     <Typography
-                      gutterBottom
+                      gutterbottom
                       variant="h6"
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
@@ -370,8 +370,8 @@ export default function CustomizedAccordions() {
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag <br />
-                    </Typography>
+                      Zipper bag
+                    </Typography><br />
                     <del className={styles.old}>100$ </del>50$/-
                   </CardContent>
                 </Card>
