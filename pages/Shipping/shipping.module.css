@@ -1,0 +1,57 @@
+.form{
+    height: auto;
+    width: 100%;
+    margin: 2rem 0;
+}
+.name{
+    margin: 1rem .3rem;
+    width: 47.8%;
+}
+.adress{
+    margin: .3rem .3rem;
+    width: 97%;
+}
+.submitbtn{
+    margin: .5rem .3rem;
+    background-color: #232323;
+    color: rgb(100, 98, 98);
+    color: white;
+    font-size: .7rem;
+}
+.submitbtn:hover{
+    background-color: #525050;
+}
+.total{
+    display: flex;
+    justify-content: space-between;
+    margin: 6rem 1rem 0 2rem;
+    color: rgb(110, 106, 106);
+
+}
+.ship{
+    display: flex;
+    justify-content: space-between; 
+    margin: 1rem 1rem 0 2rem;
+    color: rgb(104, 101, 101);
+
+}
+.hr{
+    width: 93%;
+    margin: auto;
+    color: lightgrey;
+}
+
+@media screen and (max-width: 470px ){
+    .name{
+        width: 97%;
+    }
+    .adress{
+        width: 97%;
+    }
+    .form{
+        height: auto;
+    }
+    .total{
+        margin: .5rem 1rem 0 2rem;
+    }
+}

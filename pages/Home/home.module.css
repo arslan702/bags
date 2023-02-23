@@ -1,0 +1,29 @@
+.home{
+    background-image: url('../../images2/bg.jpg');
+    height: 80vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.homebtn{
+position: absolute;
+top: 72%;
+left: 40%;
+background-color: white;
+color: brown;
+font-weight: 700;
+padding: .4rem 3rem;
+}
+.homebtn:hover{
+    color: rgb(100, 97, 97);
+    background-color: white;
+}
+
+@media screen and (max-width:500px){
+    .homebtn{
+        top: 50%;
+        left: 30%;
+        padding: .2rem 1.5rem;
+    }
+}

@@ -1,0 +1,46 @@
+
+.btn:hover{
+    background-color: rgb(225, 163, 241);
+    color:rgb(152, 106, 161);
+    margin-left: 2pt;
+}
+.img{
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 5px 10px -5px black;
+
+}
+.card{
+    height: 310px;
+    width: 100%;
+}
+.tab{
+    padding: 0 0 0 25rem;
+}
+.tabhead{
+    margin: 2.5rem 0 0 0;
+    font-weight: 800;
+}
+.tabhead:hover{
+    color: #2d2b2e;
+    margin-right: 1px;
+}
+.old{
+    margin: 0 1rem;
+    color: rgb(139, 136, 136);
+}
+@media screen and (min-width:601px ) and (max-width:997px){
+    .tab{
+padding: 0 0 0 27%;
+    }
+}
+@media screen and (min-width:471px ) and (max-width:600px){
+    .tab{
+padding: 0 0% 0 15%;
+    }
+}
+@media screen and (min-width:300px ) and (max-width:470px){
+    .tab{
+padding: 0 2% 0 2%;
+    }
+}
