@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./home.module.css";
+import styles from "./ho.module.css";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import Collection from "../../Components/Collection/Collection";
@@ -13,7 +13,7 @@ export default function HomePage() {
     <div>
       <div className={styles.home}>
         <Box>
-          <Button className={styles.homebtn}>
+          <Button variant="contained" className={styles.homebtn}>
             See All Products
           </Button>
         </Box>

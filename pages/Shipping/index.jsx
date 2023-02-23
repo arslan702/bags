@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./shipping.module.css";
-import { Container, Grid, Typography, Card, Box, Button, MenuItem } from "@mui/material";
+import { Container, Grid, Typography, Card, Box, Button, MenuItem, FormGroup, FormControl } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useRouter } from "next/router";
 
@@ -18,7 +18,7 @@ export default function Shipping() {
           <Grid item xs={12} sm={12} md={7} lg={7}>
             <div className={styles.form}>
               <Typography p={1}>Shipping Adress</Typography>
-              <form action="">
+              <FormControl action="">
                 <div>
                 
                 <TextField
@@ -74,7 +74,7 @@ export default function Shipping() {
                     className={styles.adress}
                   />
                 </div>
-              </form>
+              </FormControl>
               <Button variant="contained" className={styles.submitbtn}>
                 Submit Now
               </Button>
