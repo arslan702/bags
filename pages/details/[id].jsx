@@ -24,10 +24,6 @@ export default function Details() {
       .catch((error) => console.log('error', error));
   }, [id]);
 
-  const handleContact = (e) => {
-    e.preventDefault();
-    router.push("/Cart");
-  };
   return (
     <div>
       {/* <div className={styles.detailsimg}></div> */}
