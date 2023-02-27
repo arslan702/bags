@@ -42,7 +42,7 @@ function UpdateUser() {
 
   const back = (e) => {
     e.preventDefault();
-    navigate('/dashboard/users')
+    navigate.push('/dashboard/users')
   }
 
   return (

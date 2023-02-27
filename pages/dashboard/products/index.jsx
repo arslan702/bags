@@ -128,7 +128,7 @@ export default function ProductPage() {
       renderCell: (params) => {
         return (
           <>
-            <Button className={styles.productListEdit} onClick={(e) => handleDetails(e, params.row._id)}>view details</Button>
+            <button className={styles.productListEdit} onClick={(e) => handleDetails(e, params.row._id)}>view details</button>
           </>
         )
       }
@@ -141,7 +141,7 @@ export default function ProductPage() {
         return (
           <>
             <Link href={"/dashboard/products/" + params.row._id}>
-              <Button className={styles.productListEdit}>Edit</Button>
+              <button className={styles.productListEdit}>Edit</button>
             </Link>
             <DeleteOutline
               className={styles.productListDelete}
@@ -176,10 +176,12 @@ export default function ProductPage() {
           onChange={(e) => setField(e.target.value)}
         >
           <MenuItem value={"title"}>Name</MenuItem>
-          <MenuItem value={"category"}>Category</MenuItem>
+          <MenuItem value={"category"}>Brand</MenuItem>
+          <MenuItem value={"sub"}>Category</MenuItem>
           <MenuItem value={"price"}>Price</MenuItem>
           <MenuItem value={"oldPrice"}>Old Price</MenuItem>
           <MenuItem value={"stock"}>Stock</MenuItem>
+          <MenuItem value={"trending"}>Trending</MenuItem>
           <MenuItem value={"hot"}>Hot Selling</MenuItem>
         </Select>
         <TextField

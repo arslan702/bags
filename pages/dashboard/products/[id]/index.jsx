@@ -165,8 +165,8 @@ function UpdateProduct() {
           type="text"
           margin="normal"
         >
-          {subCategory?.map((sub, index) => (
-            <MenuItem key={index} value={sub}>
+          {subCategory?.map((sub) => (
+            <MenuItem key={sub?._id} value={sub?.category}>
               {sub?.category}
             </MenuItem>
           ))}
