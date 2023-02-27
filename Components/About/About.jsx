@@ -34,7 +34,7 @@ export default function About() {
             them all here at RTW Creation, at discounted and affordable prices.
             We're an online store helping you keep up with the latest trends and
             revolutionizing your everyday attire by adding our magic. We offer
-            hassle-free delivery all over Pakistan with cash on delivery as a
+            hassle-free delivery all over with cash on delivery as a
             payment method and even offer a 7 days return/exchange policy.
           </p>
         </Grid>
