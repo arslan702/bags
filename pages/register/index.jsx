@@ -53,7 +53,7 @@ export default function RegisterPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Um-Bintain
+              Sign in to ABC Bags
             </Typography>
 
             <Typography variant="body2" sx={{ mb: 5 }}>
