@@ -2,13 +2,20 @@ import React from "react";
 import styles from "./footer.module.css";
 import { Container, Typography, Box } from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
-import PhoneSharpIcon from "@mui/icons-material/PhoneSharp";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+// import PhoneSharpIcon from "@mui/icons-material/PhoneSharp";
+// import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import { createStyles, makeStyles } from "@mui/styles";
+import { useRouter } from "next/router";
 
 export default function Footer() {
   const classes = useStyles();
+  const router = useRouter();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push('/category')
+  }
   return (
     <div className={styles.footer}>
       <Container>
@@ -63,22 +70,22 @@ export default function Footer() {
             <Typography variant="h4" px={2} className={classes.footerheader}>
               Main Menu
             </Typography>
-            <Typography variant="h6" className={classes.menudetails}>
+            <Typography onClick={(e) => handleClick(e)} variant="h6" className={classes.menudetails}>
               All
             </Typography>
-            <Typography variant="h6" className={classes.menudetails}>
+            <Typography onClick={(e) => handleClick(e)} variant="h6" className={classes.menudetails}>
               New Arrival
             </Typography>
-            <Typography variant="h6" className={classes.menudetails}>
+            <Typography onClick={(e) => handleClick(e)} variant="h6" className={classes.menudetails}>
               Hand bags
             </Typography>
-            <Typography variant="h6" className={classes.menudetails}>
+            <Typography onClick={(e) => handleClick(e)} variant="h6" className={classes.menudetails}>
               Shoulder Bag
             </Typography>
-            <Typography variant="h6" className={classes.menudetails}>
+            <Typography onClick={(e) => handleClick(e)} variant="h6" className={classes.menudetails}>
               Backpack
             </Typography>
-            <Typography variant="h6" className={classes.menudetails}>
+            <Typography onClick={(e) => handleClick(e)} variant="h6" className={classes.menudetails}>
               Cross body bag
             </Typography>
           </Grid>
