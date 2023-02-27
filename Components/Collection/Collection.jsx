@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Grid,
@@ -9,14 +9,24 @@ import {
 } from "@mui/material";
 import styles from "./collection.module.css";
 import Image from "next/image";
-import tot from "../../images2/Totebags/tot.jpg";
-import img2 from "../../images2/crossbodybag/cross.jpg";
-import img3 from "../../images2/handbags/hand.jpg";
-import img4 from "../../images2/Shoulder/shoulder.jpg";
+import { createStyles, makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Collection() {
+  const classes = useStyles();
   const router = useRouter();
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`/api/category/get?page=4`)
+      .then((res) => {
+        setCategory(res?.data)
+        // console.log(res?.data)
+      })
+      .catch((error) => console.log(error));
+  },[])
 
   const handleMore = (e) => {
     e.preventDefault();
@@ -27,9 +37,10 @@ export default function Collection() {
       <div className={styles.collection}>
         <Box className={styles.head}>Collections</Box>
         <Grid container>
-          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
+          {category?.map((cat) => (
+          <Grid key={cat?._id} item xs={12} sm={6} md={3} lg={3} mx={0}>
             <Card className={styles.card}>
-              <Image src={tot} className={styles.img} alt=''/>
+              <Image src={cat?.img[0]?.url} width={200} height={200} className={styles.img} alt=''/>
             </Card>
             <CardContent>
               <Typography
@@ -38,116 +49,50 @@ export default function Collection() {
                 component="div"
                 align="center"
               >
-                Tote bags
+                {cat?.category}
               </Typography>
             </CardContent>
             <Box textAlign="center">
               <Button
                 variant="contained"
                 onClick={(e) => handleMore(e)}
-                className={styles.btn}
+                className={classes.btn}
                 sx={{ backgroundColor: "#5C727D", color: "white" }}
               >
                 More Items
               </Button>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
-            <Card className={styles.card}>
-              <Image src={img2} className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <Typography
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                crossbody bag
-              </Typography>
-            </CardContent>
-            <Box textAlign="center">
-              <Button
-                variant="contained"
-                className={styles.btn}
-                onClick={(e) => handleMore(e)}
-                sx={{ backgroundColor: "#5C727D", color: "white" }}
-              >
-                More Items
-              </Button>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
-            <Card className={styles.card}>
-              <Image src={img3} className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <Typography
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                hand bags
-              </Typography>
-            </CardContent>
-            <Box textAlign="center">
-              <Button
-                variant="contained"
-                className={styles.btn}
-                onClick={(e) => handleMore(e)}
-                sx={{ backgroundColor: "#5C727D", color: "white" }}
-              >
-                More Items
-              </Button>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={3} mx={0}>
-            <Card className={styles.card}>
-              <Image src={img4} className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <Typography
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                Shoulder bags
-              </Typography>
-            </CardContent>
-            <Box textAlign="center">
-              <Button
-                variant="contained"
-                className={styles.btn}
-                onClick={(e) => handleMore(e)}
-                sx={{ backgroundColor: "#5C727D", color: "white" }}
-              >
-                More Items
-              </Button>
-            </Box>
-          </Grid>
-
-          {/* <Grid item xs={12} sm={6} md={3} lg={3} mx={0} >
-<Card className={styles.card} >
-              <Image src={img1}  className={styles.img} />
-            </Card>
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                back pack <br />
-              </Typography>
-            </CardContent>
-            <Box textAlign="center">
-              <Button  variant="contained" className={styles.btn} sx={{backgroundColor: '#5C727D', color:'white', }} >More Items</Button>
-            </Box>
-</Grid> */}
+          ))}
         </Grid>
       </div>
     </div>
   );
 }
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    hom: {
+      backgroundImage: 'url(../../images2/bg.jpg)',
+      height: '80vh',
+      width: '100%',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative',
+      [theme?.breakpoints?.down("sm")]: {
+        height: 'auto'
+      }
+    },
+    btn: {
+      "&:hover": {
+        color: 'rgb(219, 210, 210)',
+        marginLeft: '2pt',
+        backgroundColor: '#1b1717',
+      },
+      fontSize: '0.7rem',
+      height: '2rem',
+      width: '9rem',
+      backgroundColor: '#232323',
+    },
+  })
+);

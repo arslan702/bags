@@ -11,7 +11,7 @@ import About from "../../Components/About/About";
 // import homeimg from "../../images2/bg.jpg"
 
 export default function HomePage() {
-  // const classes = useStyles();
+  const classes = useStyles();
   return (
     <div>
       <div className={styles.home}>

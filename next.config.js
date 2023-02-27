@@ -5,9 +5,14 @@ const nextConfig = {
 
 module.exports = nextConfig
 
-
 module.exports = {
   images: {
-    domains: ['images.upsplash.com']
-  }
+    domains: ['res.cloudinary.com'],
+  },
 }
+
+// module.exports = {
+//   images: {
+//     domains: ['images.upsplash.com']
+//   }
+// }

@@ -8,23 +8,14 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import {
-  Container,
   Grid,
   Card,
   CardContent,
-  Button,
-  TextField,
+  Pagination,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import img1 from "../../images2/backpack/1.jpg";
-import img2 from "../../images2/Hot/2.jpg";
-import img3 from "../../images2/Shoulder/3.jpg";
-import img4 from "../../images2/Totebags/4.jpg";
-import img5 from "../../images2/crossbodybag/1.jpg";
-import img6 from "../../images2/Trending/2.jpg";
-import img7 from "../../images2/handbags/4.jpg";
-import img8 from "../../images2/handbags/8.jpg";
 import Image from "next/image";
+import axios from "axios";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -65,15 +56,47 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 export default function CustomizedAccordions() {
   const router = useRouter();
   const [expanded, setExpanded] = React.useState("panel1");
+  const [brands, setBrands] = React.useState([]);
+  const [categories, setCategories] = React.useState([]);
+  const [products, setProducts] = React.useState([]);
+  const [page, setPage] = React.useState(1);
+  const [totalPages, setTotalPages] = React.useState()
+  const [pageSize, setPageSize] = React.useState();
+
+  React.useEffect(() => {
+    axios.get('/api/brand/get')
+    .then((res) => (
+      setBrands(res?.data)
+    ))
+    axios.get('/api/category/get')
+    .then((res) => (
+      setCategories(res?.data)
+    ))
+    axios.get(`/api/product/get?page=${page}&size=8`)
+    .then((res) => {
+      setProducts(res?.data?.products)
+      setTotalPages(res?.data?.totalProducts)
+      setPageSize(res?.data?.pageSize);
+      })
+  },[page])
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const handleDetail = (e) => {
+  const handleClick = (e, brand, category) => {
     e.preventDefault();
-    router.push("/details");
+    axios.get(`/api/product/get?page=${page}&size=8&field=category&sub=sub&brand=${brand}&category=${category}`)
+    .then((res) => {
+      setProducts(res?.data?.products)
+    })
+  }
+
+  const handleDetail = (e,id) => {
+    e.preventDefault();
+    router.push(`/details/${id}`);
   };
+
   return (
     <div>
       <div className={styles.productimg}>
@@ -84,172 +107,60 @@ export default function CustomizedAccordions() {
         <Grid container>
           <Grid item xs={12} sm={12} md={2.5} lg={2.5}>
             <div className={styles.category}>Brands</div>
-
+            {brands?.map((brand, index) => (
             <Accordion
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
+              key={brand?._id}
+              expanded={expanded === `panel${index+1}`}
+              onChange={handleChange(`panel${index+1}`)}
             >
               <AccordionSummary
                 aria-controls="panel1d-content"
                 id="panel1d-header"
               >
                 <Typography className={styles.cathead}>
-                  Louis vuitton
+                  {brand?.title}
                 </Typography>
               </AccordionSummary>
+              
               <AccordionDetails>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-                <Typography className={styles.catlist}>backpack</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-                <Typography className={styles.catlist}>Clutch</Typography>
+              {categories?.map((category) => (
+                <>
+                <Typography key={category._id} onClick={(e) => handleClick(e,brand?.title, category?.category)} className={styles.catlist}>{category?.category}</Typography>
+                </>
+                ))}
               </AccordionDetails>
             </Accordion>
-            <Accordion
-              expanded={expanded === "panel2"}
-              onChange={handleChange("panel2")}
-            >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-              >
-                <Typography className={styles.cathead}>GUCCI</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-                <Typography className={styles.catlist}>backpack</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-                <Typography className={styles.catlist}>Clutch</Typography>
-              </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-              expanded={expanded === "panel3"}
-              onChange={handleChange("panel3")}
-            >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-              >
-                <Typography className={styles.cathead}>Chanel</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-                <Typography className={styles.catlist}>backpack</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-                <Typography className={styles.catlist}>Clutch</Typography>
-              </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-              expanded={expanded === "panel4"}
-              onChange={handleChange("panel4")}
-            >
-              <AccordionSummary
-                aria-controls="panel3d-content"
-                id="panel3d-header"
-              >
-                <Typography className={styles.cathead}>Prada</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-                <Typography className={styles.catlist}>backpack</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-                <Typography className={styles.catlist}>Clutch</Typography>
-              </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-              expanded={expanded === "panel5"}
-              onChange={handleChange("panel5")}
-            >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-              >
-                <Typography className={styles.cathead}>Hermes</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={styles.catlist}>Clutch</Typography>
-                <Typography className={styles.catlist}>backpack</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-              </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-              expanded={expanded === "panel7"}
-              onChange={handleChange("panel7")}
-            >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-              >
-                <Typography className={styles.cathead}>Michael cors</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={styles.catlist}>backpack</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-                <Typography className={styles.catlist}>Clutch</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion
-              expanded={expanded === "panel8"}
-              onChange={handleChange("panel8")}
-            >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-              >
-                <Typography className={styles.cathead}>Coach</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={styles.catlist}>Clutch</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>backpack</Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion
-              expanded={expanded === "panel9"}
-              onChange={handleChange("panel9")}
-            >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-              >
-                <Typography className={styles.cathead}>Fendi</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={styles.catlist}>backpack</Typography>
-                <Typography className={styles.catlist}>Clutch</Typography>
-                <Typography className={styles.catlist}>Shoulder bag</Typography>
-                <Typography className={styles.catlist}>Tote bags</Typography>
-                <Typography className={styles.catlist}>Hand bags</Typography>
-              </AccordionDetails>
-            </Accordion>
+            ))}
           </Grid>
 
           <Grid item xs={12} sm={12} md={9} lg={9}>
-            <Box className={styles.searchbar}>
+            {/* <Box className={styles.searchbar}>
               <TextField
                 className={styles.search}
                 id="demo-helper-text-misaligned-no-helper"
                 label="Search Products"
               />
-            </Box>
+            </Box> */}
             <Box className={styles.producthead}>Products</Box>
             <Grid container>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img1} className={styles.img} />
+              {products.length == 0 ?
+                <Grid item xs={12} sm={6} md={6} lg={3}>
+                  <center>
+                  <Typography
+                      gutterbottom
+                      variant="h6"
+                      component="div"
+                      className={styles.productname}
+                    >
+                      No Results Found
+                    </Typography>
+                  </center>
+              </Grid>
+                :
+              products?.map((product) => (
+              <Grid product={product?._id} item xs={12} sm={6} md={6} lg={3}>
+                <Card onClick={(e) => handleDetail(e, product._id)} className={styles.card}>
+                  <Image src={product?.img[0]?.url} width={200} height={200} className={styles.img} alt='product image'/>
 
                   <CardContent>
                     <Typography
@@ -258,129 +169,25 @@ export default function CustomizedAccordions() {
                       component="div"
                       className={styles.productname}
                     >
-                      Zipper bag
+                      {product?.title}
                     </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
+                    {product?.oldPrice > 0 ?
+                    <del className={styles.old}>{product?.oldPrice}$ </del>
+                    : ''}
+                    {product?.price}$/-
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img2} className={styles.img} />
-                  <CardContent>
-                    <Typography
-                      gutterbottom
-                      variant="h6"
-                      component="div"
-                      className={styles.productname}
-                    >
-                      Zipper bag
-                    </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img3} className={styles.img} />
-                  <CardContent>
-                    <Typography
-                      gutterbottom
-                      variant="h6"
-                      component="div"
-                      className={styles.productname}
-                    >
-                      Zipper bag
-                    </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img4} className={styles.img} />
-                  <CardContent>
-                    <Typography
-                      gutterbottom
-                      variant="h6"
-                      component="div"
-                      className={styles.productname}
-                    >
-                      Zipper bag
-                    </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img5} className={styles.img} />
-                  <CardContent>
-                    <Typography
-                      gutterbottom
-                      variant="h6"
-                      component="div"
-                      className={styles.productname}
-                    >
-                      Zipper bag
-                    </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img6} className={styles.img} />
-                  <CardContent>
-                    <Typography
-                      gutterbottom
-                      variant="h6"
-                      component="div"
-                      className={styles.productname}
-                    >
-                      Zipper bag
-                    </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img7} className={styles.img} />
-                  <CardContent>
-                    <Typography
-                      gutterbottom
-                      variant="h6"
-                      component="div"
-                      className={styles.productname}
-                    >
-                      Zipper bag
-                    </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={3}>
-                <Card onClick={(e) => handleDetail(e)} className={styles.card}>
-                  <Image src={img8} className={styles.img} />
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      component="div"
-                      className={styles.productname}
-                    >
-                      Zipper bag
-                    </Typography><br />
-                    <del className={styles.old}>100$ </del>50$/-
-                  </CardContent>
-                </Card>
-              </Grid>
+              ))}
             </Grid>
+            <Pagination 
+              count={Math.ceil(totalPages/pageSize)} 
+              page={page}
+              onChange={(e,value) => setPage(value)} 
+            />
           </Grid>
         </Grid>
       </Box>
-      {/* </Container> */}
     </div>
   );
 }

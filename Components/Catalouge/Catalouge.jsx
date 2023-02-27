@@ -4,26 +4,19 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import img1 from '../../images2/backpack/1.jpg'
-import img2 from '../../images2/backpack/2.jpg'
-import img3 from '../../images2/backpack/3.jpg'
-import img4 from '../../images2/backpack/4.jpg'
-import img5 from '../../images2/crossbodybag/1.jpg'
-import img6 from '../../images2/crossbodybag/2.jpg'
-import img7 from '../../images2/handbags/3.jpg'
-import img8 from '../../images2/handbags/3.jpg'
+import { createStyles, makeStyles } from "@mui/styles";
 
 import Image from "next/image";
 import styles from './catalouge.module.css'
 
-import { textAlign, Container } from '@mui/system';
+import { Container } from '@mui/system';
 import {
-
     Card,
     CardContent,
-    Button,
     Grid
   } from "@mui/material";
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,27 +52,53 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
+  const classes = useStyles();
+  const router = useRouter();
   const [value, setValue] = React.useState(0);
+  const [bestSelling, setBestSelling] = React.useState([]);
+  const [products, setProducts] = React.useState([]);
+  const [sales, setSales] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get('/api/product/get?page=1&size=12&sort=ascending')
+    .then((res) => {
+      setProducts(res?.data?.products)
+    })
+    axios.get('/api/product/get?page=1&size=12&field=hot&search=yes&sort=ascending')
+    .then((res) => {
+      setBestSelling(res?.data?.products)
+    })
+    axios.get('/api/product/get?page=1&size=12&field=oldPrice')
+    .then((res) => {
+      setSales(res?.data?.products)
+    })
+  },[])
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleClick = (e, id) => {
+    e.preventDefault();
+    router.push(`/details/${id}`)
+  }
 
   return (
       <Container>
     <Box  sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className={styles.tab}  >
-          <Tab label= "Top Picks " className={styles.tabhead} {...a11yProps(0)} />
-          <Tab label="Best Sellers" className={styles.tabhead} {...a11yProps(1)} />
+          <Tab label= "Sale items " className={styles.tabhead} {...a11yProps(0)} />
+          <Tab label="Best Selling" className={styles.tabhead} {...a11yProps(1)} />
           <Tab label="New Arrivals" className={styles.tabhead} {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
       <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={6} lg={3}>
-            <Card className={styles.card}>
-              <Image src={img1}  className={styles.img} alt=''/>
+        {sales?.map((sale) => (
+          <Grid onClick={(e) => handleClick(e, sale?._id)} key={sale?._id} item xs={12} sm={6} md={6} lg={3}>
+            <Card className={classes.card}>
+              <Image src={sale?.img[0]?.url} width={200} height={200} className={classes.img} alt=''/>
             </Card>
             <CardContent>
               <div
@@ -88,71 +107,21 @@ export default function BasicTabs() {
                 component="div"
                 align="center"
               >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
+                {sale?.title} <br />
+                <del className={styles.old} >{sale?.oldPrice}$  </del>{sale?.price}$/- 
               </div>
             </CardContent>
            
           </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3}>
-            <Card className={styles.card}>
-              <Image src={img2}  className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-            
-          </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3} >
-            <Card className={styles.card}>
-              <Image src={img3}  className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-            
-          </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3} >
-            <Card className={styles.card}>
-              <Image src={img4}  className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-                
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-           
-          </Grid>
+        ))}
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={6} lg={3}>
-            <Card className={styles.card}>
-              <Image src={img5} className={styles.img} alt=''/>
+        {bestSelling?.map((best) => (
+          <Grid onClick={(e) => handleClick(e, best?._id)} key={best?._id} item xs={12} sm={6} md={6} lg={3}>
+            <Card className={classes.card}>
+              <Image src={best?.img[0]?.url} width={200} height={200} className={classes.img} alt=''/>
             </Card>
             <CardContent>
               <div
@@ -161,72 +130,20 @@ export default function BasicTabs() {
                 component="div"
                 align="center"
               >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
+                {best?.title} <br />
+                {best?.price}$/- 
               </div>
             </CardContent>
-            
           </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3}>
-            <Card className={styles.card}>
-            <Image src={img6}  className={styles.img} alt=''/>
-
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-            
-          </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3} >
-            <Card className={styles.card}>
-              <Image src={img7}  className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-            
-          </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3} >
-            <Card className={styles.card}>
-              <Image src={img8}  className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-                
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-           
-          </Grid>
+        ))}
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
       <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={6} lg={3}>
-            <Card className={styles.card}>
-              <Image src={img2}  className={styles.img} alt=''/>
+      {products?.map((product) => (
+          <Grid onClick={(e) => handleClick(e, product?._id)} key={product?._id} item xs={12} sm={6} md={6} lg={3}>
+            <Card className={classes.card}>
+              <Image src={product?.img[0]?.url} width={200} height={200}  className={classes.img} alt=''/>
             </Card>
             <CardContent>
               <div
@@ -235,65 +152,13 @@ export default function BasicTabs() {
                 component="div"
                 align="center"
               >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
+                {product?.title} <br />
+                  {product?.price}$/- 
               </div>
             </CardContent>
            
           </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3}>
-            <Card className={styles.card}>
-              <Image src={img3}  className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-           
-          </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3} >
-            <Card className={styles.card}>
-              
-              <Image src={img4}  className={styles.img} alt=''/>
-            </Card>
-            <CardContent>
-              <div
-                gutterbottom
-                variant="h6"
-                component="div"
-                align="center"
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-            
-          </Grid>
-          <Grid item xs={12} sm={6} md={6} lg={3} >
-            <Card className={styles.card} >
-            <Image src={img5}  className={styles.img} alt=''/> 
-            </Card>
-            <CardContent>
-              <div
-                gutterBottom
-                variant="h6"
-                component="div"
-                align="center"
-                
-              >
-                Zipper bag <br />
-                <del className={styles.old} >100$  </del>50$/- 
-              </div>
-            </CardContent>
-            
-          </Grid>
+          ))}
         </Grid>
       </TabPanel>
     </Box>
@@ -301,3 +166,25 @@ export default function BasicTabs() {
     </Container>
   );
 }
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    img: {
+      height: '100%',
+      width: '100%',
+      cursor: 'pointer',
+      boxShadow: '0px 5px 10px -5px black',
+    },
+    card: {
+      width: '100%',
+      height: '310px',
+    },
+    btn: {
+      "&:hover": {
+        color: 'rgb(152, 106, 161)',
+        marginLeft: '2pt',
+        backgroundColor: 'rgb(255, 163, 241)',
+      },
+    },
+  })
+);

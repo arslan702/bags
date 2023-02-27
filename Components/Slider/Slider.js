@@ -7,12 +7,14 @@ import { responsive } from "./data";
 export default function Slider({products, title}) {
   const product = products.map((item) => (
     <Product
-      name={item.name}
-      url={item.imageurl}
-      price={item.price}
-      oldprice={item.oldprice}
-      description={item.description}
-    
+      id={item?._id}
+      name={item?.title}
+      url={item?.img?.length ? item?.img[0]?.url : ''}
+      price={item?.price}
+      oldprice={item?.oldPrice}
+      description={item?.description}
+      brand={item?.category}
+      category={item?.sub}
     />
     
   ));

@@ -8,14 +8,14 @@ export default function Product(props) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    router.push('/details')
+    router.push(`/details/${props?.id}`)
   }
   return (
     <div onClick={(e) => handleClick(e)} className={styles.card}>
-      <Image className={styles.productimage} width={500} height={500} src={props.url} alt="product image" />
+      <Image className={styles.productimage} width={500} height={500} src={props?.url} alt="product image" />
       <br/>
-      <p className={styles.description} >{props.description}</p> <br/>
-      <div className={styles.price}>   <del>{props.oldprice}</del>    <span>{props.price}</span>    </div> <br/>
+      <p className={styles.description} >{props?.description}</p> <br/>
+      <div className={styles.price}>   $<span>{props?.price}</span>    </div> <br/>
     </div>
   );
 }

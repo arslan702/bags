@@ -125,12 +125,14 @@
     flex-direction: column;
     justify-content: space-evenly;
     cursor: pointer;
+    background: white;
+    margin-top: 20px;
   }
   
   .right .hamburger span {
     z-index: 20;
     width: 100%;
-    height: 3px;
+    height: 5px;
     background-color: black;
     transform-origin: left;
     transition: all 0.5s ease;

@@ -5,17 +5,19 @@ import Grid from "@mui/system/Unstable_Grid";
 import PhoneSharpIcon from "@mui/icons-material/PhoneSharp";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
+import { createStyles, makeStyles } from "@mui/styles";
 
 export default function Footer() {
+  const classes = useStyles();
   return (
     <div className={styles.footer}>
       <Container>
         <Grid container>
           <Grid item xs={12} sm={6} md={6} lg={3}>
-            <Typography variant="h4" px={2} className={styles.footerheader}>
+            <Typography variant="h4" px={2} className={classes.footerheader}>
               About the Shop
             </Typography>
-            <Typography className={styles.about} pt={1}>
+            <Typography className={classes.about} pt={1}>
               {" "}
               abc is one of the with a wide range of premium quality makeup
               products to provide the best value for money to global customers
@@ -28,24 +30,24 @@ export default function Footer() {
             sm={6}
             md={6}
             lg={3}
-            className={styles.footerdetail}
+            className={classes.footerdetail}
           >
-            <Typography variant="h4" px={3} className={styles.footerheader}>
+            <Typography variant="h4" px={3} className={classes.footerheader}>
               Help
             </Typography>
-            <Typography variant="h6" className={styles.helpdetails}>
+            <Typography variant="h6" className={classes.helpdetails}>
               Privacy Policy
             </Typography>
-            <Typography variant="h6" className={styles.helpdetails}>
+            <Typography variant="h6" className={classes.helpdetails}>
               Shipping Policy
             </Typography>
-            <Typography variant="h6" className={styles.helpdetails}>
+            <Typography variant="h6" className={classes.helpdetails}>
               Terms & Condition
             </Typography>
-            <Typography variant="h6" className={styles.helpdetails}>
+            <Typography variant="h6" className={classes.helpdetails}>
               Contact Us
             </Typography>
-            <Typography variant="h6" className={styles.helpdetails}>
+            <Typography variant="h6" className={classes.helpdetails}>
               Refund Policy
             </Typography>
           </Grid>
@@ -56,27 +58,27 @@ export default function Footer() {
             sm={6}
             md={6}
             lg={3}
-            className={styles.footerdetail}
+            className={classes.footerdetail}
           >
-            <Typography variant="h4" px={2} className={styles.footerheader}>
+            <Typography variant="h4" px={2} className={classes.footerheader}>
               Main Menu
             </Typography>
-            <Typography variant="h6" className={styles.menudetails}>
+            <Typography variant="h6" className={classes.menudetails}>
               All
             </Typography>
-            <Typography variant="h6" className={styles.menudetails}>
+            <Typography variant="h6" className={classes.menudetails}>
               New Arrival
             </Typography>
-            <Typography variant="h6" className={styles.menudetails}>
+            <Typography variant="h6" className={classes.menudetails}>
               Hand bags
             </Typography>
-            <Typography variant="h6" className={styles.menudetails}>
+            <Typography variant="h6" className={classes.menudetails}>
               Shoulder Bag
             </Typography>
-            <Typography variant="h6" className={styles.menudetails}>
+            <Typography variant="h6" className={classes.menudetails}>
               Backpack
             </Typography>
-            <Typography variant="h6" className={styles.menudetails}>
+            <Typography variant="h6" className={classes.menudetails}>
               Cross body bag
             </Typography>
           </Grid>
@@ -87,28 +89,28 @@ export default function Footer() {
             sm={6}
             md={6}
             lg={3}
-            className={styles.footerdetail}
+            className={classes.footerdetail}
           >
-            <Typography variant="h4" px={3} className={styles.footerheader}>
+            <Typography variant="h4" px={3} className={classes.footerheader}>
               Contact Us
             </Typography>
-            <Box className={styles.boxIcon}>
+            {/* <Box className={classes.boxIcon}>
               <div className={styles.ico}>
                 <PhoneSharpIcon fontSize="medium" />
               </div>
-              <div className={styles.icons}>+12345678</div>
+              <div className={classes.icons}>+12345678</div>
             </Box>
             <Box className={styles.boxIcon}>
               <div className={styles.ico}>
                 <WhatsAppIcon fontSize="medium" />
               </div>
-              <div className={styles.icons}>+12345678</div>
-            </Box>
+              <div className={classes.icons}>+12345678</div>
+            </Box> */}
             <Box className={styles.boxIcon}>
               <div className={styles.ico}>
                 <EmailIcon fontSize="medium" />
               </div>
-              <div className={styles.icons}>abc@gmail.com</div>
+              <div className={classes.icons}>wholesaleliquidationauction@gmail.com</div>
             </Box>
           </Grid>
         </Grid>
@@ -121,3 +123,93 @@ export default function Footer() {
     </div>
   );
 }
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    footerheader: {
+      "&:hover": {
+        cursor: "pointer",
+        color: 'white'
+      },
+      fontWeight: '100',
+      fontSize: '1.1rem',
+      color: 'white',
+      [theme?.breakpoints?.down("down")]: {
+        padding: '2px 0 0 1rem',
+        margin: '0.7rem 0 0 0',
+      }
+    },
+    about: {
+      "&:hover": {
+        color: "white",
+        cursor: "pointer",
+      },
+      lineHeight: '25px',
+      padding: '15px',
+      textAlign: 'left',
+      fontSize: '0.9rem',
+      fontWeight: '100',
+      color: 'rgb(168, 178, 184)',
+    },
+    helpdetails: {
+      "&:hover": {
+        cursor: "pointer",
+        marginRight: "2px",
+        color: 'white',
+      },
+      fontSize: '0.9rem',
+      fontWeight: '100',
+      padding: '0.7rem 0 0 1.3rem',
+      color: 'rgb(168, 178, 184)',
+      [theme?.breakpoints?.down("down")]: {
+        padding: '0.7rem 0 0 1rem',
+      }
+    },
+    footerdetail: {
+      textAlign: 'left',
+      fontWeight: '100',
+      fontSize: '10px',
+    },
+    menudetails: {
+      "&:hover": {
+        color: 'white',
+        cursor: 'pointer',
+        marginRight: '2px',
+      },
+      fontSize: '0.9rem',
+      fontWeight: '100',
+      padding: '0.7rem 0 0 0.9rem',
+      color: 'rgb(168, 178, 184)',
+    },
+    boxIcon: {
+      display: 'flex',
+      flexDirection: 'row',
+      marginTop: '0.7rem',
+      padding: '0rem 0 0 1.3rem',
+      color: 'rgb(168, 178, 184)',
+      [theme?.breakpoints?.down('md')]: {
+        padding: '0rem 0 0 0.8rem',
+      },
+    },
+    footerrights: {
+      "&:hover": {
+        cursor: 'pointer',
+        color: 'white',
+      },
+      margin: 'auto',
+      textAlign: 'center',
+      padding: '2.3rem 0rem 1rem 0',
+      fontSize: '1rem',
+      color: 'rgb(168, 178, 184)',
+    },
+    icons: {
+      "&:hover": {
+        color: 'rgb(168, 178, 184)',
+        cursor: 'pointer',
+      },
+      fontSize: '0.9rem',
+      padding: '6px',
+      margin: '0 5px',
+    },
+  })
+);

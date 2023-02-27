@@ -1,7 +1,6 @@
 .products {
     margin: 5rem 0 2rem 3rem ;
     height: auto;
-
   }
   .productimg{
       background-image: url('../../images2/bg.jpg');
@@ -71,7 +70,7 @@ text-align: right;
       text-align: center;
       font-size: 1.4rem;
       margin-top: 1rem;
-  
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   .img{
       height: 260px;
