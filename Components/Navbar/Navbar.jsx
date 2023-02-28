@@ -46,6 +46,12 @@ const Navbar = () => {
             </Link>
           </li>
           ))}
+          <li>
+            {" "}
+            <Link href="/contactUs" className={styles.pink}>
+              Contact Us
+            </Link>
+          </li>
         </ul>
       </div>
 

@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./shipping.module.css";
 import { createStyles, makeStyles } from "@mui/styles"
 import { Container, Grid, Typography, Card, Box, Button, MenuItem, FormGroup, FormControl } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import emailjs from "@emailjs/browser";
 import { useRouter } from "next/router";
 
 export default function Shipping() {
   const classes = useStyles();
   const router = useRouter();
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_ymvfttm', 'template_lcolk1b', form.current, 'bqF2AYPOj2UR8zBaK')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
   const continueShopping = (e) => {
     e.preventDefault();
@@ -18,94 +31,76 @@ export default function Shipping() {
       <Container>
         <Grid container>
           <Grid item xs={12} sm={12} md={7} lg={7}>
-            <div className={classes.form}>
-              <Typography p={1}>Shipping Adress</Typography>
+            <Box component="form" ref={form} className={classes.form} onSubmit={sendEmail}>
+              <Typography p={1}>Contact Us</Typography>
               <FormControl action="">
-                <div>
-                
-                <TextField
-                    // style={{margin: '0.3rem 0.3rem', width: '97%'}}
+                <div>                  
+                  <TextField
+                    className={classes.nameClass && styles.name}
+                    required={true}
+                    name='firstName'
+                    id="outlined-required"
+                    label="First Name"
+                    defaultValue=""
+                  />
+                  <TextField
+                    className={classes.nameClass && styles.name}
+                    required
+                    name="lastName"
+                    id="outlined-required"
+                    label="Last Name"
+                    defaultValue=""
+                  />
+                  {/* <TextField
                     className={classes.adress}
                     type="select"
                     required
                     id="outlined-required"
                     label="Select Country"
                     defaultValue="Pakistan"
-                  />
-                  
-                  <TextField
-                    // style={{margin: '1rem 0.3rem', width: '47.8%'}}
-                    className={classes.nameClass}
-                    required
-                    id="outlined-required"
-                    label="First Name"
-                    defaultValue=""
-                  />
-                  <TextField
-                    // style={{margin: '1rem 0.3rem', width: '47.8%'}}
-                    className={classes.nameClass}
-                    required
-                    id="outlined-required"
-                    label="Last Name"
-                    defaultValue=""
-                  />
-                  <TextField
-                    // style={{margin: '03rem 0.3rem', width: '97%'}}
+                  /> */}
+                  {/* <TextField
                     className={classes.adress}
                     required
                     id="outlined-required"
-                    label="Address"
+                    label="Email Address"
                     defaultValue=""
-                  />
+                  /> */}
                   <TextField
-                    // style={{margin: '1rem 0.3rem', width: '47.8%'}}
-                    className={classes.nameClass}
+                    className={classes.nameClass && styles.name}
                     required
+                    name="email_address"
                     id="outlined-required"
-                    label="City"
+                    label="Email Address"
                     defaultValue=""
                   />
                   <TextField
-                    // style={{margin: '1rem 0.3rem', width: '47.8%'}}
-                    className={classes.nameClass}
+                    className={classes.nameClass && styles.name}
                     id="outlined-required"
-                    label="Postal Code"
+                    label="Phone Number"
+                    name="phoneNumber"
                     defaultValue=""
                   />
-                  <TextField
-                    // style={{margin: '03rem 0.3rem', width: '97%'}}
+                  <textarea
                     className={classes.adress}
-                    type="number"
+                    style={{height: '100px', padding: '15px'}}
+                    placeholder="What do you want to know?"
+                    type="text"
+                    name="description"
                     required
                     id="outlined-required"
-                    label="Phone"
+                    // label="What do you want to know?"
                     defaultValue=""
                   />
                 </div>
               </FormControl>
-              <Button variant="contained" className={classes.submitbtn}>
+              <Button type="submit" variant="contained" className={classes.submitbtn}>
                 Submit Now
               </Button>
               <Button onClick={(e) => continueShopping(e)} variant="contained" className={classes.submitbtn}>
                 Continue to shoping
               </Button>
-            </div>
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={5} lg={5}>
-            <div className={classes.total}>
-              <Typography>Total</Typography>
-              <Typography>Rs. 930/-</Typography>
-            </div>
-            <div className={classes.ship}>
-              <Typography>Shipping</Typography>
-              <Typography>Rs. 250/-</Typography>
-            </div>
-            <hr className={classes.hr} />
-            <div className={classes.ship}>
-              <Typography>Total</Typography>
-              <Typography>Rs. 1180/-</Typography>
-            </div>
+            </Box>
           </Grid>
         </Grid>
       </Container>
@@ -126,18 +121,22 @@ const useStyles = makeStyles((theme) =>
     nameClass: {
       margin: '1rem 0.3rem',
       width: '47.8%',
-      [theme?.breakpoints?.down("sm")]: {
-        width: '97%',
+      maxWidth: '97%',
+      [theme?.breakpoints?.up("sm")]: {
+        // minWidth: '97%',
       }
     },
     adress: {
       margin: '0.3rem 0.3rem',
       width: '97%',
-      [theme?.breakpoints?.down("sm")]: {
+      [theme?.breakpoints?.up("sm")]: {
         width: '97%',
       }
     },
     submitbtn: {
+      "&:hover": {
+        backgroundColor: '#525050',
+      },
       margin: '0.5rem 0.3rem',
       backgroundColor: '#232323',
       color: 'white',
