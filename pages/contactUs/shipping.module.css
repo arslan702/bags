@@ -6,10 +6,18 @@
 .name{
     margin: 1rem 0.3rem;
     width: 47.8%;
+    height: 55px;
+    border-radius: 5px;
+    border: 1px solid #A8B2B8;
+    padding: 15px;
 }
 .adress{
     margin: 0.3rem 0.3rem;
     width: 97%;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid #A8B2B8;
+    padding: 15px;
 }
 .submitbtn{
     margin: .5rem .3rem;
