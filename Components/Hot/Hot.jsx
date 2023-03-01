@@ -8,7 +8,7 @@ export default function Hot() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/product/get?page=1&size=15&field=hot&search=yes&sort=descending')
+    axios.get('/api/product/get?page=1&size=15&field=hot&search=yes&sort=ascending')
     .then((res) => {
       setProducts(res?.data?.products)
     })

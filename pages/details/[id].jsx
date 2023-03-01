@@ -41,8 +41,6 @@ export default function Details() {
                       key={i}
                       src={item?.url}
                       alt={`${i} Slide`}
-                      // height={300}
-                      // width={500}
                     />
                   ))
                 }

@@ -32,7 +32,7 @@ const getProducts = async (req, res) => {
       })
         .limit(PAGE_SIZE)
         .skip(PAGE_SIZE * (page - 1));
-    } else if (search != undefined) {
+    } else if (req.query.search != undefined) {
       products = await Product.find({ [req.query.field]: myArray })
         .limit(PAGE_SIZE)
         .skip(PAGE_SIZE * (page - 1))

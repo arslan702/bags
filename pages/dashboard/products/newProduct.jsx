@@ -113,6 +113,7 @@ function NewProduct() {
           className={classes.formFields}
           onChange={(e) => setTitle(e.target.value)}
           value={title}
+          required
           label="Title"
           type="text"
           margin="normal"
@@ -120,6 +121,7 @@ function NewProduct() {
         <TextField
           className={classes.formFields}
           select
+          required
           onChange={handleChange}
           value={category}
           label="Brands"
@@ -137,6 +139,7 @@ function NewProduct() {
           select
           onChange={(e) => setSub(e.target.value)}
           value={sub}
+          required
           label="Category"
           type="text"
           margin="normal"
