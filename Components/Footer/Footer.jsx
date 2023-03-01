@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./footer.module.css";
 import { Container, Typography, Box } from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
-// import PhoneSharpIcon from "@mui/icons-material/PhoneSharp";
-// import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import { createStyles, makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
