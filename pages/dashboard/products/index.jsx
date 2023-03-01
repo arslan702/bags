@@ -25,9 +25,8 @@ export default function ProductPage() {
   const deleteProduct = (id) => {
     axios.delete(`/api/product/delete/${id}`).then(
       () => setPlus(plus + 1),
-      // setOpen(false),
       axios
-        .get(`/api/product/get?page=${page+1}&size=8`)
+        .get(`/api/product/get?page=${page+1}&size=8&sort=ascending`)
         .then((res) => {
           setProduct(res.data.products);
           setTotalProducts(res.data.totalProducts);
@@ -43,7 +42,7 @@ export default function ProductPage() {
       router.push('/login')
     }
     axios
-      .get(`/api/product/get?page=${page+1}&size=8`)
+      .get(`/api/product/get?page=${page+1}&size=8&sort=ascending`)
       .then((res) => {
         setProduct(res.data.products);
         setTotalProducts(res.data.totalProducts);
@@ -56,7 +55,7 @@ export default function ProductPage() {
   const handleDiffSearch = (e) => {
     e.preventDefault();
     axios
-      .get(`/api/product/get?page=${page+1}&size=8&field=${field}&search=${diff}`)
+      .get(`/api/product/get?page=${page+1}&size=8&field=${field}&search=${diff}&sort=ascending`)
       .then((res) => {
         setProduct(res.data.products);
         setTotalProducts(res.data.totalProducts);
