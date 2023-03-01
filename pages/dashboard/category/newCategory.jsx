@@ -6,31 +6,30 @@ import styles from './category.module.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { LoadingButton } from '@mui/lab';
 
 function NewCategory() {
   const classes = useStyles();
 
   const [category, setCategory] = useState('');
-  const [values, setValues] = useState('')
   const [img, setImg] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
-  // let subCategory = [];
+  const [load, setLoad] = useState(false);
 
   const router = useRouter();
 
-  // const removesubCategoryFields = (i) => {
-  //   const newValues = [...subCategory];
-  //   newValues?.splice(i, 1);
-  //   setSubCategory(newValues);
-  // };
-
   const createCategory = ({ category, img }) => {
+    setLoad(true)
     axios
       .post(`/api/category/create`, { category, img })
       .then((res) => {
         router.push('/dashboard/category');
+        setLoad(false)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        setLoad(false);
+      });
   };
 
   const createProductImagesChange = (e) => {
@@ -138,9 +137,9 @@ function NewCategory() {
 
         <ButtonGroup className={classes.buttons} aria-label="outlined primary button group">
           <Button onClick={(e) => back(e)} style={{fontFamily:"Open Sans", minWidth:"90px"}}>Back</Button>
-          <Button variant="contained" type="submit" style={{fontFamily:"Open Sans", minWidth:"90px"}}>
+          <LoadingButton loading={load} variant="contained" type="submit" style={{fontFamily:"Open Sans", minWidth:"90px"}}>
             Create
-          </Button>
+          </LoadingButton>
         </ButtonGroup>
       </Box>
     </Container>

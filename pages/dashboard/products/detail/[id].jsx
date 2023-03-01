@@ -72,15 +72,15 @@ const ProductDetails = () => {
                 <h2>{title}</h2>
               </div>
               <div className={styles.detailsBlock3}>
-                <h1>{`${price}`}</h1>
-                <h1><del>{`${oldPrice}`}</del></h1>
+                <h1>{price}</h1>
+                <h1><del>{oldPrice}</del></h1>
                 <div className={styles.detailsBlock31}>
                 </div>
 
                 <p>
                   Status:
                   <b className={stock < 1 ? `${styles.redColor}` : `${styles.greenColor}`}>
-                    {stock < 1 ? "OutOfStock" : "InStock"}
+                    {stock}
                   </b>
                 </p>
               </div>

@@ -63,7 +63,7 @@ export default function Details() {
                   >
                     {" "}
                     {product?.oldPrice > 0 ? 
-                    <del>{product?.oldPrice}$</del> : ''} <span className={styles.newprice}>{product?.price}$</span>{" "}
+                    <del>{product?.oldPrice}</del> : ''} <span className={styles.newprice}>{product?.price}</span>{" "}
                   </Typography>
 
                   <ul>

@@ -108,7 +108,7 @@ export default function BasicTabs() {
                 align="center"
               >
                 {sale?.title} <br />
-                <del className={styles.old} >{sale?.oldPrice}$  </del>{sale?.price}$/- 
+                <del className={styles.old} >{sale?.oldPrice}  </del>{sale?.price}/- 
               </div>
             </CardContent>
            
@@ -131,7 +131,7 @@ export default function BasicTabs() {
                 align="center"
               >
                 {best?.title} <br />
-                {best?.price}$/- 
+                {best?.price}/- 
               </div>
             </CardContent>
           </Grid>
@@ -153,7 +153,7 @@ export default function BasicTabs() {
                 align="center"
               >
                 {product?.title} <br />
-                  {product?.price}$/- 
+                  {product?.price}/- 
               </div>
             </CardContent>
            

@@ -3,11 +3,13 @@ import { createStyles, makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { LoadingButton } from '@mui/lab';
 
 function NewBrand() {
   const classes = useStyles();
 
   const [title, setTitle] = useState('');
+  const [load, setLoad] = useState(false);
 
   const router = useRouter();
 
@@ -16,12 +18,17 @@ function NewBrand() {
       .post(`/api/brand/create`, { title })
       .then((res) => {
         router.push('/dashboard/brands');
+        setLoad(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        setLoad(false);
+      });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoad(true);
     createBrand(title);
   };
 
@@ -58,9 +65,9 @@ function NewBrand() {
 
         <ButtonGroup className={classes.buttons} aria-label="outlined primary button group">
           <Button onClick={(e) => back(e)} style={{fontFamily:"Open Sans", minWidth:"90px"}}>Back</Button>
-          <Button variant="contained" type="submit" style={{fontFamily:"Open Sans", minWidth:"90px"}}>
-            Add New
-          </Button>
+          <LoadingButton loading variant="contained" type="submit" style={{fontFamily:"Open Sans", minWidth:"90px"}}>
+            <span>Add New</span>
+          </LoadingButton>
         </ButtonGroup>
       </Box>
     </Container>

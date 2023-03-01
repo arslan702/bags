@@ -11,10 +11,10 @@ const ProductSchema = new mongoose.Schema(
       type: String,
     },
     price: {
-      type: Number,
+      type: String,
     },
     oldPrice: {
-      type: Number,
+      type: String,
     },
     category: {
       // type: mongoose.Schema.ObjectId,
@@ -33,7 +33,7 @@ const ProductSchema = new mongoose.Schema(
       default: 'no',
     },
     stock: {
-      type: Number,
+      type: String,
     },
     img: [
       {

@@ -89,6 +89,8 @@ export default function CustomizedAccordions() {
     axios.get(`/api/product/get?page=${page}&size=8&field=category&sub=sub&brand=${brand}&category=${category}`)
     .then((res) => {
       setProducts(res?.data?.products)
+      setTotalPages(res?.data?.totalProducts)
+      setPageSize(res?.data?.pageSize);
     })
   }
 
@@ -172,9 +174,9 @@ export default function CustomizedAccordions() {
                       {product?.title}
                     </Typography><br />
                     {product?.oldPrice > 0 ?
-                    <del className={styles.old}>{product?.oldPrice}$ </del>
+                    <del className={styles.old}>{product?.oldPrice} </del>
                     : ''}
-                    {product?.price}$/-
+                    {product?.price}/-
                   </CardContent>
                 </Card>
               </Grid>

@@ -15,7 +15,7 @@ export default function Product(props) {
       <Image className={styles.productimage} width={500} height={500} src={props?.url} alt="product image" />
       <br/>
       <p className={styles.description} >{props?.description}</p> <br/>
-      <div className={styles.price}>   $<span>{props?.price}</span>    </div> <br/>
+      <div className={styles.price}><span>{props?.price}</span>    </div> <br/>
     </div>
   );
 }

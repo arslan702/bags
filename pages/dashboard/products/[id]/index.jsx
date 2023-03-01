@@ -14,11 +14,11 @@ function UpdateProduct() {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [price, setPrice] = useState(0);
-  const [oldPrice, setOldPrice] = useState(0);
+  const [price, setPrice] = useState('');
+  const [oldPrice, setOldPrice] = useState('');
   const [category, setCategory] = useState('');
   const [sub, setSub] = useState();
-  const [stock, setStock] = useState(0);
+  const [stock, setStock] = useState('');
   const [trending, setTrending] = useState('');
   const [hot, setHot] = useState('');
   const [img, setImg] = useState([]);

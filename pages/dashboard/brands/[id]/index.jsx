@@ -12,6 +12,7 @@ import { createStyles, makeStyles } from "@mui/styles";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { LoadingButton } from "@mui/lab";
 
 function UpdateBrand() {
   const navigate = useRouter();
@@ -19,14 +20,20 @@ function UpdateBrand() {
   const classes = useStyles();
   const [title, setTitle] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [load, setLoad] = useState(false);
 
   const updateCategory = (title) => {
+    setLoad(true)
     axios
       .patch(`/api/brand/update/${id}`, { title })
       .then((res) => {
         navigate.push("/dashboard/brands");
+        setLoad(false);
       })
-      .catch((err) => console.log("err-", err));
+      .catch((err) => {
+        setLoad(false);
+        console.log("err-", err)
+      });
   };
 
   useEffect(() => {
@@ -98,13 +105,14 @@ function UpdateBrand() {
             >
               Back
             </Button>
-            <Button
+            <LoadingButton
+              loading={load}
               variant="contained"
               type="submit"
               style={{ fontFamily: "Open Sans", minWidth: "90px" }}
             >
               Update
-            </Button>
+            </LoadingButton>
           </ButtonGroup>
         </Box>
       )}

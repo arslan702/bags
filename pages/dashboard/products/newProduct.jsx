@@ -12,11 +12,11 @@ function NewProduct() {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [price, setPrice] = useState(0);
-  const [oldPrice, setOldPrice] = useState(0);
+  const [price, setPrice] = useState('');
+  const [oldPrice, setOldPrice] = useState('');
   const [category, setCategory] = useState('');
   const [sub, setSub] = useState('');
-  const [stock, setStock] = useState(0);
+  const [stock, setStock] = useState('');
   const [trending, setTrending] = useState('no');
   const [hot, setHot] = useState('no');
   const [img, setImg] = useState([]);
