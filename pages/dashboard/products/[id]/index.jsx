@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../product.module.css';
 import { useRouter } from 'next/router';
+import { LoadingButton } from '@mui/lab';
 
 
 function UpdateProduct() {
@@ -49,8 +50,12 @@ function UpdateProduct() {
       .patch(`/api/product/update/${id}`, { title, description, price, oldPrice, category, sub, stock, trending, hot, img })
       .then((res) => {
         navigate.push('/dashboard/products');
+        setLoading(false)
       })
-      .catch((err) => console.log('err-', err));
+      .catch((err) => {
+        console.log('err-', err)
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -76,6 +81,7 @@ function UpdateProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     updateProduct(title, description, price, oldPrice, category, sub, stock, trending, hot, img);
   };
 
@@ -247,9 +253,9 @@ function UpdateProduct() {
             <Button onClick={(e) => back(e)} style={{ fontFamily: 'Open Sans', minWidth: '90px' }}>
               Back
             </Button>
-            <Button variant="contained" type="submit" style={{ fontFamily: 'Open Sans', minWidth: '90px' }}>
+            <LoadingButton loading={loading} variant="contained" type="submit" style={{ fontFamily: 'Open Sans', minWidth: '90px' }}>
               Update
-            </Button>
+            </LoadingButton>
           </ButtonGroup>
         </Box>
       )}

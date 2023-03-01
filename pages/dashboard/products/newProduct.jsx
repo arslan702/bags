@@ -4,6 +4,7 @@ import styles from './product.module.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { LoadingButton } from '@mui/lab';
 
 function NewProduct() {
   const classes = useStyles();
@@ -46,10 +47,13 @@ function NewProduct() {
     axios
       .post(`/api/product/create`, { title, description, price, oldPrice, category, sub, stock, trending, hot, img })
       .then((res) => {
-        setLoading(false)
         router.push('/dashboard/products');
+        setLoading(false)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        setLoading(false);
+      });
   };
 
   const createProductImagesChange = (e) => {
@@ -210,9 +214,9 @@ function NewProduct() {
 
         <ButtonGroup className={classes.buttons} aria-label="outlined primary button group">
           <Button onClick={(e) => back(e)} style={{fontFamily:"Open Sans", minWidth:"90px"}}>Back</Button>
-          <Button variant="contained" type="submit" style={{fontFamily:"Open Sans", minWidth:"90px"}}>
-            {loading ? 'Please Wait' : 'Create'}
-          </Button>
+          <LoadingButton loading={loading} variant="contained" type="submit" style={{fontFamily:"Open Sans", minWidth:"90px"}}>
+            Create
+          </LoadingButton>
         </ButtonGroup>
       </Box>
     </Container>
