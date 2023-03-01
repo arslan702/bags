@@ -60,11 +60,11 @@ export default function BasicTabs() {
   const [sales, setSales] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get('/api/product/get?page=1&size=12&sort=ascending')
+    axios.get('/api/product/get?page=1&size=12&sorts=ascending')
     .then((res) => {
       setProducts(res?.data?.products)
     })
-    axios.get('/api/product/get?page=1&size=12&field=hot&search=yes&sort=ascending')
+    axios.get('/api/product/get?page=1&size=12&field=hot&search=yes&sorts=ascending')
     .then((res) => {
       setBestSelling(res?.data?.products)
     })
