@@ -153,7 +153,7 @@ function Dashboard({value, children}) {
             
             {/* <img src={finalLogo} height={60} alt='Logo' /> */}
 
-            <h2>Um-Bintain</h2>
+            <h2>ABC-Bags</h2>
           </Toolbar>
           <List component="nav">
             {mainListItems}

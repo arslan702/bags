@@ -25,7 +25,7 @@ const getProducts = async (req, res) => {
       : (myArray = new RegExp(req.query.search, "i"));
     // console.log("field----   ", req.query.field);
     if (req.query.field == "oldPrice") {
-      products = await Product.find({ oldPrice: { $gt: 0 } }).limit(PAGE_SIZE);
+      products = await Product.find({ oldPrice: { $ne: undefined || '' } }).limit(PAGE_SIZE);
     } else if (req.query.field == "category" && req.query.sub == "sub") {
       products = await Product.find({
         $and: [{ category: req.query.brand }, { sub: req.query.category }],
