@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <div>
       <div className={styles.home}>
-        <h1>Don't buy from me I am a scammer</h1>
+        <h1 style={{color: 'white', fontSize: '80px'}}>Don't buy from me I am a scammer I don't even paid the man who developed this website for me.</h1>
         <Box>
           <button  className={styles.homebtn}>
             See All Products
