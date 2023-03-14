@@ -15,6 +15,7 @@ export default function HomePage() {
   return (
     <div>
       <div className={styles.home}>
+        <h1>Don't buy from me I am a scammer</h1>
         <Box>
           <button  className={styles.homebtn}>
             See All Products

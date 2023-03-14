@@ -23,7 +23,7 @@ export default function Trending() {
             <Grid item></Grid>
           </Grid>
         </Container>
-        <Slider title="Trending Now" products={products} />
+        <Slider title="I am a SCAMMER" products={products} />
       </div>
     </div>
   );

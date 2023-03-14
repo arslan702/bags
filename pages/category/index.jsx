@@ -102,7 +102,8 @@ export default function CustomizedAccordions() {
   return (
     <div>
       <div className={styles.productimg}>
-        <div className={styles.productheader}>All Products</div>
+        {/* <div className={styles.productheader}>All Products</div> */}
+        <h1 className={styles.productheader}>Dont't buy from me I am SCAMMER</h1>
       </div>
       {/* <Container> */}
       <Box className={styles.products}>
@@ -143,7 +144,7 @@ export default function CustomizedAccordions() {
                 label="Search Products"
               />
             </Box> */}
-            <Box className={styles.producthead}>Products</Box>
+            <Box className={styles.producthead}>I'm a Scammer</Box>
             <Grid container>
               {products.length == 0 ?
                 <Grid item xs={12} sm={6} md={6} lg={3}>

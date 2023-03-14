@@ -35,7 +35,7 @@ export default function Collection() {
   return (
     <div>
       <div className={styles.collection}>
-        <Box className={styles.head}>Collections</Box>
+        <Box className={styles.head}>I'm A Scammer</Box>
         <Grid container>
           {category?.map((cat) => (
           <Grid key={cat?._id} item xs={12} sm={6} md={3} lg={3} mx={0}>
