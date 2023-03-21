@@ -15,7 +15,7 @@ export default function Hot() {
   },[])
   return (
     <>
-      <Slider title="Don't buy from me I'm a Scammer" products={products} />
+      <Slider title="Bags" products={products} />
     </>
   );
 }
